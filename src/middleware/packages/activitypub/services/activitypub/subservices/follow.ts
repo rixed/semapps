@@ -95,7 +95,6 @@ const FollowService = {
 
           await ctx.call('activitypub.outbox.post', {
             collectionUri: recipient.outbox,
-            '@context': 'https://www.w3.org/ns/activitystreams',
             actor: activity.object,
             type: ACTIVITY_TYPES.ACCEPT,
             object: activityObject,
