@@ -168,12 +168,14 @@ const CollectionsRegistryService = {
           webId: 'system'
         });
 
-        const attachPredicate = arrayOf(results)[0]?.attachPredicate.value;
-
         // Find the first registration that match the attach predicate and the object type(s)
-        return this.registeredCollections.find(
-          (reg: CollectionRegistration) => reg.attachPredicate === attachPredicate
-        );
+        return arrayOf(results)
+          .map((r: any) =>
+            this.registeredCollections.find(
+              (reg: CollectionRegistration) => reg.attachPredicate === r.attachPredicate.value
+            )
+          )
+          .find(Boolean);
       }
     },
 
