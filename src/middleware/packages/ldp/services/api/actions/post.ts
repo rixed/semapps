@@ -43,7 +43,7 @@ export default async function post(this: any, ctx: any) {
         }
 
         const extension = mime.extension(ctx.params.files[0].mimetype);
-        const slug = extension ? `${uuidv4()}.${extension}}` : uuidv4();
+        const slug = extension ? `${uuidv4()}.${extension}` : uuidv4();
 
         resourceUri = await ctx.call(controlledActions.post || 'ldp.container.post', {
           containerUri: uri,
