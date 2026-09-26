@@ -56,6 +56,9 @@ const Schema = {
     const exist = await ctx.call('triplestore.named-graph.exist', { uri: namedGraphUri, dataset });
 
     if (!exist) {
+      // FIXME: the created graph has a generated name, whereas readers (ldp.remote.getStored)
+      // expect getSlugFromUri(resourceUri). The copy is therefore never found: reads always fall
+      // back to the network, and each store adds yet another graph with the same triples.
       namedGraphUri = await ctx.call('triplestore.named-graph.create', { dataset });
     } else {
       await ctx.call('triplestore.named-graph.clear', { uri: namedGraphUri, dataset });

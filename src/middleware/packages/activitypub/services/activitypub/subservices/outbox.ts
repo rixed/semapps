@@ -100,6 +100,11 @@ const OutboxService = {
         // Use the current time for the activity's publish date
         activity.published = new Date().toISOString();
 
+        // FIXME: bto and bcc must be stripped here, before the activity is persisted and sent,
+        // or the blind recipients leak to everyone who can read it. Since getRecipients is only
+        // called later (for rights, then for delivery), the recipients have to be computed first
+        // and kept aside, then both fields deleted.
+
         if (transient === true) {
           // Object or actor URI + hash with lower case activity
           activityUri = `${activity.object || activity.actor}#${arrayOf(getType(activity))[0].toLowerCase()}`;

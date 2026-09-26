@@ -75,6 +75,10 @@ const setRightsHandler = {
         await addReadRights({
           ctx,
           resourceUri: objectUri,
+          // FIXME: addReadRights expects `recipientUris`; under this name the recipients are
+          // ignored, so only a public activity grants read on the object. Recipients of a
+          // non-public one get 403 on the object's URI, seeing it only through the copy
+          // embedded in the activity.
           recipientUri: newRecipients,
           skipObjectsWatcher: true,
           anon: activityIsPublic

@@ -133,6 +133,9 @@ const ObjectService = {
             break;
         }
 
+        // The whole object, not just its URI, so the activity embeds a snapshot of it.
+        // FIXME: that snapshot is persisted in the activity's own graph, duplicating the
+        // object's triples and drifting from the resource whenever it is later updated.
         if (objectUri) {
           activity.object = await ctx.call(
             'ldp.resource.get',
