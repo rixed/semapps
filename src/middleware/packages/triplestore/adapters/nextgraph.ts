@@ -142,7 +142,7 @@ export default class NextGraphAdapter extends BaseAdapter implements AdapterInte
         protectedRepoId
       );
 
-      this.getLogger().info(`NextGraph user created for dataset ${dataset} with user id : ${userId}`);
+      this.getLogger().info(`NextGraph WAC document created for dataset ${dataset} with user id : ${userId}`);
 
       // Store the user and WAC document IDs in mappings document
 
@@ -204,7 +204,7 @@ export default class NextGraphAdapter extends BaseAdapter implements AdapterInte
       const datasetMetadata = await this.getDatasetMetadata(dataset);
 
       if (!datasetMetadata) {
-        this.getLogger().warn(`Nextgraph delete dataset : No nextgraph mapping found for dataset: ${dataset}`);
+        this.getLogger().warn(`NextGraph delete dataset : No nextgraph mapping found for dataset: ${dataset}`);
         return; // Nothing to delete
       }
 
