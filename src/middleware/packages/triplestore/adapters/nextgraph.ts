@@ -47,7 +47,7 @@ export default class NextGraphAdapter extends BaseAdapter implements AdapterInte
     if (!settings.adminUserKey) throw new Error('Admin user key is required');
     if (!settings.clientPeerKey) throw new Error('Client peer key is required');
     if (!settings.serverAddr) throw new Error('Server address is required');
-    if (!settings.mappingsUserId) throw new Error('Admin user id is required');
+    if (!settings.mappingsUserId) throw new Error('Mappings user id is required');
     if (!settings.mappingsNuri) throw new Error('Mappings nuri is required');
 
     // Create the SDK config, used to initialize the adapter and to create datasets (users)
