@@ -123,7 +123,7 @@ export default class NextGraphAdapter extends BaseAdapter implements AdapterInte
     try {
       // Create user
 
-      const userId = await ng.admin_create_user(this.sdkConfig);
+      const userId = await ng.admin_create_user(0);
 
       this.getLogger().info(`NextGraph user created for dataset ${dataset} with user id : ${userId}`);
 
